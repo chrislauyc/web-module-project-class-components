@@ -2,21 +2,25 @@
 // feel free to change this component.js into TodoList.js
 import React from 'react';
 import Todo from './Todo';
+import {
+	Grid,Paper
+} from '@material-ui/core';
 class TodoList extends React.Component{
-	constructor(){
-		super();
-	};
 	render(){
 		const {todoList} = this.props;
 		return (
-			<div>
+			<Grid container>
 			{
 				Object.keys(todoList).map((key)=>(
-					<Todo key={key} data={todoList[key]}>
-				));
-				
+					<Grid key={key} item xs={12}>
+						<Paper>
+							<Todo data={todoList[key]} handleChecked={this.props.handleChecked} />
+						</Paper>
+					</Grid>
+				))
 			}
-			</div>
+			</Grid>
 		)
 	};
 }
+export default TodoList;
